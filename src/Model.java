@@ -147,6 +147,29 @@ public class Model {
         }
     }
 
+    //{{0,0,0},{0,0,0},{0,0,0}}
+
+    static int[][] GridStringToInt(String string){
+        int[][] newGrid=new int[3][3];
+
+        if ((string.charAt(0)=='{')&&(string.charAt(1)=='{')&&(string.charAt(3)==',')&&(string.charAt(5)==',')&&(string.charAt(7)=='}')&&(string.charAt(8)==',')&&(string.charAt(9)=='{')&&(string.charAt(11)==',')&&(string.charAt(13)==',')&&(string.charAt(15)=='}')&&(string.charAt(16)==',') &&(string.charAt(17)=='{')&&(string.charAt(19)==',')&&(string.charAt(21)==',')&&(string.charAt(23)=='}') &&(string.charAt(24)=='}')){
+
+            newGrid[0][0]=Character.getNumericValue(string.charAt(2));
+            newGrid[0][1]=Character.getNumericValue(string.charAt(4));
+            newGrid[0][2]=Character.getNumericValue(string.charAt(6));
+
+            newGrid[1][0]=Character.getNumericValue(string.charAt(10));
+            newGrid[1][1]=Character.getNumericValue(string.charAt(12));
+            newGrid[1][2]=Character.getNumericValue(string.charAt(14));
+
+            newGrid[2][0]=Character.getNumericValue(string.charAt(18));
+            newGrid[2][1]=Character.getNumericValue(string.charAt(20));
+            newGrid[2][2]=Character.getNumericValue(string.charAt(20));
+        }
+
+        return newGrid;
+    }
+
     public int getPlayer(){
         return player;
     }

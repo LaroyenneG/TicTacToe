@@ -1,6 +1,12 @@
 /**
  * Created by guillaume on 06/09/16.
  */
-public class OracleGame {
+class OracleGame {
+    static String graph[][];
+
+    static void saveGraph(){
+
+    }
+
 
 }

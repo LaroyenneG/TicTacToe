@@ -3,6 +3,7 @@
  */
 public class Model {
 
+    private int taille;
     private int grid[][];
     private int player;
 
@@ -168,6 +169,18 @@ public class Model {
         }
 
         return newGrid;
+    }
+
+    public int[][] getGrid(){
+        return grid;
+    }
+
+    public int getTaille(){
+        return taille;
+    }
+
+    public void setTaille(int taille){
+        this.taille=taille;
     }
 
     public int getPlayer(){

@@ -8,6 +8,7 @@ public class Test {
     public static void main(String args[]){
         Scanner scanner = new Scanner(System.in);
 
+
         Model model = new Model();
 
         //int grid[][] ={{2,2,1},{0,1,2},{1,2,1}};

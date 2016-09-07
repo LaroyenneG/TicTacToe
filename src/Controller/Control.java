@@ -1,6 +1,8 @@
-/**
+package Controller; /**
  * Created by guillaume on 07/09/16.
  */
+import View.Windows;
+import Model.Model;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 

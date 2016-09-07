@@ -1,3 +1,6 @@
+import Controller.ControlGroup;
+import Model.Model;
+
 import javax.swing.*;
 
 /**

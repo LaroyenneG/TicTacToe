@@ -1,9 +1,13 @@
-/**
+package Controller; /**
  * Created by guillaume on 07/09/16.
  */
+import Controller.Control;
+import View.Windows;
+import Model.Model;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+
 
 public class ControlButton extends Control implements ActionListener{
 

@@ -1,3 +1,7 @@
+package Model;
+
+import Model.Model;
+
 import java.util.Scanner;
 
 /**

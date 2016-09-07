@@ -164,7 +164,7 @@ public class Model {
 
             newGrid[2][0]=Character.getNumericValue(string.charAt(18));
             newGrid[2][1]=Character.getNumericValue(string.charAt(20));
-            newGrid[2][2]=Character.getNumericValue(string.charAt(20));
+            newGrid[2][2]=Character.getNumericValue(string.charAt(22));
         }
 
         return newGrid;

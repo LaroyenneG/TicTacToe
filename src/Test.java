@@ -10,19 +10,12 @@ public class Test {
 
         Model model = new Model();
 
-
-
         //int grid[][] ={{2,2,1},{0,1,2},{1,2,1}};
-
-        model.setGrid(Model.GridStringToInt("{{2,2,1},{0,1,2},{1,2,1}}"));
-        model.showGrid();
 
         int w;
         while ((!model.playerWin(1))&&!(model.playerWin(2))&&(model.canPlay())){
             int x,y,j;
             j=model.getPlayer();
-
-
 
             System.out.println("joueur "+j);
             model.showGrid();
@@ -44,7 +37,6 @@ public class Test {
                 System.out.println("Match null");
             }
         }
-
-
+        System.exit(0);
     }
 }

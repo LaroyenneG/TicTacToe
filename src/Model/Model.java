@@ -150,7 +150,6 @@ public class Model {
         }
     }
 
-    //{{0,0,0},{0,0,0},{0,0,0}}
 
     static int[][] GridStringToInt(String string){
         int[][] newGrid=new int[3][3];

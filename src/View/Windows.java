@@ -157,6 +157,19 @@ public class Windows extends JFrame {
 
     }
 
+    public void dispMessage(int i){
+        JOptionPane dialog = new JOptionPane();
+
+        if(i==0){
+            JOptionPane.showMessageDialog(dialog, "Match null", "Ok", 1);
+        }else if(1==i){
+            JOptionPane.showMessageDialog(dialog, "Tu as gagné !!", "Bravo joueur 1", 1);
+        }else if(2==i){
+            JOptionPane.showMessageDialog(dialog, "Tu as gagné !!", "Bravo joueur 2", 1);
+        }
+
+    }
+
     public void controlTrue() {
         int[][] modelGrid = this.model.getGrid();
 

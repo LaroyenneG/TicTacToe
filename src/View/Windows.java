@@ -6,158 +6,153 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-/**
- * Created by guillaume on 07/09/16.
- */
+
 
 public class Windows extends JFrame {
 
-    private static final Color colorTextButton = Color.DARK_GRAY;
-    private static final Font jButttonFont = new Font("Helvetica", 1, 35);
-    private static final ImageIcon img = new ImageIcon("src/icon.png");
-    private static final Color colorcase = Color.WHITE;
-    private static final String sigleJ1 = new String("X");
-    private static final String sigleJ2 = new String("O");
+    private static final Color COLOR_TEXT_BUTTON = Color.DARK_GRAY;
+    private static final Font J_BUTTON_FONT = new Font("Helvetica", 1, 35);
+    private static final Color COLOR_CASE = Color.WHITE;
+    private static final String SIDLE_J1 = "X";
+    private static final String SIDLE_J2 = "O";
 
     private Model model;
     private JLabel dispPlayer;
     private JButton[][] tabJButton;
-    public JPanel theGrid;
+    private JPanel theGrid;
     private JMenuItem info;
     private JMenuItem reset;
 
 
     public Windows(Model model) {
         this.model = model;
-        this.initAttribut();
-        this.creerWidget();
+        this.initAttribute();
+        this.createWidget();
         this.setTitle("TicTacToe");
         this.setSize(300, 300);
-        this.setLocationRelativeTo((Component) null);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setResizable(false);
         this.setFocusableWindowState(false);
         this.setDefaultCloseOperation(3);
     }
 
-    private void initAttribut() {
-        this.tabJButton = new JButton[this.model.getTaille()][this.model.getTaille()];
-        this.theGrid = new JPanel(new GridLayout(this.model.getTaille(), this.model.getTaille(), 3, 3));
+    private void initAttribute() {
+        this.tabJButton = new JButton[this.model.getSize()][this.model.getSize()];
+        this.theGrid = new JPanel(new GridLayout(this.model.getSize(), this.model.getSize(), 3, 3));
         dispPlayer = new JLabel("Le joueur 1 doit jouer");
         reset = new JMenuItem("New game");
         info = new JMenuItem("Info");
-
-
     }
 
-    private void creerWidget() {
+    private void createWidget() {
         JPanel panoPrincipal = new JPanel(new BorderLayout());
         JPanel cadre = new JPanel();
         JMenuBar barMenu = new JMenuBar();
         JMenu menu = new JMenu("Options");
         panoPrincipal.setBackground(Color.white);
-        this.theGrid.setBackground(Color.black);
+        theGrid.setBackground(Color.black);
         cadre.setLayout(new BorderLayout(10, 10));
         cadre.setBackground(Color.white);
         cadre.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        this.dispPlayer.setHorizontalAlignment(0);
+        dispPlayer.setHorizontalAlignment(0);
         menu.add(reset);
         menu.add(info);
 
         barMenu.add(menu);
-        this.setJMenuBar(barMenu);
-        panoPrincipal.add(this.dispPlayer, "North");
-        cadre.add(this.theGrid);
+        setJMenuBar(barMenu);
+        panoPrincipal.add(dispPlayer, "North");
+        cadre.add(theGrid);
         panoPrincipal.add(cadre, "Center");
-        this.setContentPane(panoPrincipal);
-        this.createGrid();
-        this.showGrid();
+        setContentPane(panoPrincipal);
+        createGrid();
+        showGrid();
     }
 
     public void setButtonControler(ActionListener listener) {
-        for (int y = 0; y < this.tabJButton.length; ++y) {
-            for (int x = 0; x < this.tabJButton[y].length; ++x) {
-                this.tabJButton[y][x].addActionListener(listener);
+        for (JButton[] aTabJButton : this.tabJButton) {
+            for (JButton anATabJButton : aTabJButton) {
+                anATabJButton.addActionListener(listener);
             }
         }
 
     }
 
-    public void setMenuControler(ActionListener listener) {
+    public void setMenuController(ActionListener listener) {
             reset.addActionListener(listener);
         info.addActionListener(listener);
     }
 
     private void createGrid() {
-        int[][] modelGrid = this.model.getGrid();
-        this.tabJButton = new JButton[this.model.getTaille()][this.model.getTaille()];
 
-        for (int y = 0; y < this.model.getTaille(); ++y) {
-            for (int x = 0; x < this.model.getTaille(); ++x) {
+        int[][] modelGrid = model.getGrid();
+        tabJButton = new JButton[model.getSize()][model.getSize()];
+
+        for (int y = 0; y < model.getSize(); ++y) {
+            for (int x = 0; x < model.getSize(); ++x) {
                 if (modelGrid[y][x] == 0) {
-                    this.tabJButton[y][x] = new JButton("");
-                    this.tabJButton[y][x].setBackground(colorcase);
+                    tabJButton[y][x] = new JButton("");
+                    tabJButton[y][x].setBackground(COLOR_CASE);
                 } else {
                     if (modelGrid[y][x] == 1) {
-                        this.tabJButton[y][x] = new JButton(sigleJ1);
+                        tabJButton[y][x] = new JButton(SIDLE_J1);
                     }
                     if (modelGrid[y][x] == 2) {
-                        this.tabJButton[y][x] = new JButton(sigleJ2);
+                        tabJButton[y][x] = new JButton(SIDLE_J2);
                     }
                 }
-                this.tabJButton[y][x].setBorderPainted(false);
-                this.tabJButton[y][x].setRequestFocusEnabled(false);
-                this.tabJButton[y][x].setFont(jButttonFont);
-                this.tabJButton[y][x].setForeground(colorTextButton);
+                tabJButton[y][x].setBorderPainted(false);
+                tabJButton[y][x].setRequestFocusEnabled(false);
+                tabJButton[y][x].setFont(J_BUTTON_FONT);
+                tabJButton[y][x].setForeground(COLOR_TEXT_BUTTON);
             }
         }
 
-        this.controlTrue();
+        controlTrue();
     }
 
     private void showGrid() {
-        for (int y = 0; y < this.tabJButton.length; ++y) {
-            for (int x = 0; x < this.tabJButton[y].length; ++x) {
-                this.theGrid.add(this.tabJButton[y][x]);
+        for (JButton[] aTabJButton : tabJButton) {
+            for (JButton anATabJButton : aTabJButton) {
+                theGrid.add(anATabJButton);
             }
         }
 
     }
 
     public void actualizeGrid() {
-        int[][] modelGrid = this.model.getGrid();
 
-        for (int y = 0; y < this.tabJButton.length; ++y) {
-            for (int x = 0; x < this.tabJButton[y].length; ++x) {
+        int[][] modelGrid = model.getGrid();
+
+        for (int y = 0; y < tabJButton.length; ++y) {
+            for (int x = 0; x < tabJButton[y].length; ++x) {
                 if (modelGrid[y][x] == 0) {
-                    this.tabJButton[y][x].setText("");
+                    tabJButton[y][x].setText("");
                 } else {
                     if (modelGrid[y][x] == 1) {
-                        this.tabJButton[y][x].setText(sigleJ1);
+                        tabJButton[y][x].setText(SIDLE_J1);
                     }
                     if (modelGrid[y][x] == 2) {
-                        this.tabJButton[y][x].setText(sigleJ2);
+                        tabJButton[y][x].setText(SIDLE_J2);
                     }
 
                 }
-                //this.tabJButton[y][x].setBackground(colorcase);
             }
         }
 
     }
 
     public void controlFalse() {
-        int[][] modelGrid = this.model.getGrid();
 
-        for (int y = 0; y < this.tabJButton.length; ++y) {
-            for (int x = 0; x < this.tabJButton[y].length; ++x) {
-                this.tabJButton[y][x].setEnabled(false);
+        for (JButton[] aTabJButton : tabJButton)
+            for (JButton anATabJButton : aTabJButton) {
+                anATabJButton.setEnabled(false);
             }
-        }
 
     }
 
-    public void dispMessage(int i){
+    public void displayMessage(int i) {
+
         JOptionPane dialog = new JOptionPane();
 
         if(i==0){
@@ -171,11 +166,10 @@ public class Windows extends JFrame {
     }
 
     public void controlTrue() {
-        int[][] modelGrid = this.model.getGrid();
 
-        for (int y = 0; y < this.tabJButton.length; ++y) {
-            for (int x = 0; x < this.tabJButton[y].length; ++x) {
-                this.tabJButton[y][x].setEnabled(true);
+        for (JButton[] aTabJButton : this.tabJButton) {
+            for (JButton anATabJButton : aTabJButton) {
+                anATabJButton.setEnabled(true);
             }
         }
 

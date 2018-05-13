@@ -1,12 +1,11 @@
-package Controller; /**
- * Created by guillaume on 07/09/16.
- */
-import Controller.Control;
-import View.Windows;
+package Controller;
+
 import Model.Model;
+import View.Windows;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 
 
 public class ControlButton extends Control implements ActionListener{
@@ -17,26 +16,26 @@ public class ControlButton extends Control implements ActionListener{
         }
 
         public void actionPerformed(ActionEvent e) {
+
             int x=0;
             int y=0;
 
             if(((JButton)e.getSource()).getText().equals("")) {
-                this.vue.actualizeGrid();
+                this.windows.actualizeGrid();
 
-                int l,m;
-                for (l=0;l<vue.getTabJButton().length;l++){
-                    for (m=0;m<vue.getTabJButton()[l].length;m++){
-                        if (vue.getTabJButton()[l][m]==((JButton)e.getSource())){
+                for (int l = 0; l < windows.getTabJButton().length; l++) {
+                    for (int m = 0; m < windows.getTabJButton()[l].length; m++) {
+                        if (windows.getTabJButton()[l][m] == e.getSource()) {
                             y=l;
                             x=m;
                         }
                     }
                 }
 
-                this.model.play(model.getPlayer(),x,y);
-                this.vue.actualizeGrid();
+                model.play(model.getPlayer(), x, y);
+                windows.actualizeGrid();
                 checkWinner();
-                vue.showPlayer();
+                windows.showPlayer();
 
             }
 

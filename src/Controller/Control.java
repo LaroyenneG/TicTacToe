@@ -4,6 +4,7 @@ import Model.Model;
 import View.Windows;
 
 public abstract class Control {
+
     Model model;
     Windows windows;
 
@@ -14,15 +15,15 @@ public abstract class Control {
 
     public void checkWinner() {
 
-        if(model.playerWin(1)||model.playerWin(2)||(!model.canPlay())){
+        if (model.playerWin(1) || model.playerWin(2) || (!model.canPlay())) {
             if (model.playerWin(1)) {
                 windows.controlFalse();
                 windows.displayMessage(1);
-            }else {
+            } else {
                 if (model.playerWin(2)) {
                     windows.controlFalse();
                     windows.displayMessage(2);
-                }else {
+                } else {
                     windows.controlFalse();
                     windows.displayMessage(0);
                 }

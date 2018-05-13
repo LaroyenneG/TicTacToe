@@ -9,9 +9,9 @@ import java.awt.event.ActionListener;
 
 public class ControlMenu extends Control implements ActionListener {
 
-    public ControlMenu(Model model, Windows vue) {
-        super(model, vue);
-        vue.setMenuController(this);
+    public ControlMenu(Model model, Windows windows) {
+        super(model, windows);
+        windows.setMenuController(this);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -20,8 +20,7 @@ public class ControlMenu extends Control implements ActionListener {
             windows.visible(false);
             windows.controlFalse();
             SwingUtilities.invokeLater(() -> {
-                Model model = new Model();
-                model.setSize(3);
+                Model model = new Model(3);
                 new ControlGroup(model);
             });
         }

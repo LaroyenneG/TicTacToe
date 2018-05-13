@@ -7,11 +7,10 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 
-
 public class Windows extends JFrame {
 
     private static final Color COLOR_TEXT_BUTTON = Color.DARK_GRAY;
-    private static final Font J_BUTTON_FONT = new Font("Helvetica", 1, 35);
+    private static final Font J_BUTTON_FONT = new Font("Helvetica", Font.BOLD, 35);
     private static final Color COLOR_CASE = Color.WHITE;
     private static final String SIDLE_J1 = "X";
     private static final String SIDLE_J2 = "O";
@@ -79,7 +78,7 @@ public class Windows extends JFrame {
     }
 
     public void setMenuController(ActionListener listener) {
-            reset.addActionListener(listener);
+        reset.addActionListener(listener);
         info.addActionListener(listener);
     }
 
@@ -155,11 +154,11 @@ public class Windows extends JFrame {
 
         JOptionPane dialog = new JOptionPane();
 
-        if(i==0){
-            JOptionPane.showMessageDialog(dialog, "Match null", "Ok", 1);
-        }else if(1==i){
+        if (i == 0) {
+            JOptionPane.showMessageDialog(dialog, "Match null", "OK", 1);
+        } else if (1 == i) {
             JOptionPane.showMessageDialog(dialog, "Tu as gagné !!", "Bravo joueur 1", 1);
-        }else if(2==i){
+        } else if (2 == i) {
             JOptionPane.showMessageDialog(dialog, "Tu as gagné !!", "Bravo joueur 2", 1);
         }
 
@@ -167,7 +166,7 @@ public class Windows extends JFrame {
 
     public void controlTrue() {
 
-        for (JButton[] aTabJButton : this.tabJButton) {
+        for (JButton[] aTabJButton : tabJButton) {
             for (JButton anATabJButton : aTabJButton) {
                 anATabJButton.setEnabled(true);
             }
@@ -177,10 +176,9 @@ public class Windows extends JFrame {
 
     public void showPlayer() {
 
-        if (model.getPlayer() == 1) {
+        if (model.getPlayer()) {
             dispPlayer.setText("Le joueur 1 doit jouer");
-        }
-        if (model.getPlayer() == 2) {
+        } else {
             dispPlayer.setText("Le joueur 2 doit jouer");
         }
 
@@ -194,12 +192,11 @@ public class Windows extends JFrame {
         return this.reset;
     }
 
-    public JMenuItem getInfo(){
-        return this.info;
+    public JMenuItem getInfo() {
+        return info;
     }
 
     public void visible(boolean b) {
-        this.setVisible(b);
+        setVisible(b);
     }
-
 }
